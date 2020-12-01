@@ -1,0 +1,35 @@
+<%= form_with scope: :task, url: update_task_path, local: true, method: :patch do |form|  %>
+    <p>
+        <% if @task.errors.any?  %>
+        <ul>
+            <% @task.errors.full_messages.each do |message| %>
+            <li>
+                <%= message %>
+            </li>
+            <% end %>
+        </ul>
+        <% end %>     
+    </p>
+
+    <br>
+    <div >
+        <%= form.label :name %>
+        <%= form.text_field :name %>
+    </div><br>
+
+    <div >
+        <%= form.label :date %>
+        <%= form.date_field :date,  :class  => 'date-field' %>
+    </div><br>
+
+    <div >
+        <%= form.label :description %>
+        <%= form.text_area :description, :class  => 'text-field' %>
+    </div><br>
+
+    <div class="actions">
+        <%= form.submit %>
+    </div>
+<% end %>
+
+<%= link_to 'Back', tasks_path %>
